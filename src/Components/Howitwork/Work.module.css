@@ -1,0 +1,80 @@
+.sectionHeading{
+    font-family: 'Libre Baskerville', serif; 
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 52px;
+    text-align: center;
+}
+.column {
+    float: left;
+    width: 30%;
+    padding: 1%;
+  }
+  
+  /* Remove extra left and right margins, due to padding */
+  .row {margin: 0 -5px;
+    padding: 2% 5%;
+}
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Responsive columns */
+  @media screen and (max-width: 1000px) {
+    .column {
+      width: 45%;
+      display: block;
+      margin-bottom: 20px;
+    }
+  }
+  @media screen and (max-width: 600px) {
+    .column {
+      width: 100%;
+      display: block;
+      margin-bottom: 20px;
+    }
+  }
+  
+  /* Style the counter cards */
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    background-color: white;
+}
+
+.headerWithIcon {
+    display: flex;
+    align-items: center; /* Align items vertically center */
+    justify-content: space-between; /* Add space between items */
+}
+
+.header span {
+    font-size: 14px;
+    font-weight: 500;
+    color: darkgray;
+    text-align: center;
+}
+
+.header h1 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 28px;
+    text-align: left;
+}
+
+.body p {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    text-align: left;
+    color: #808080;
+}
+
+.icon {
+    margin-left: 20px; /* Add some space between the text and the icon */
+}

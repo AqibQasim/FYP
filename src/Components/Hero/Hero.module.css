@@ -1,0 +1,91 @@
+.container {
+    position: relative;
+    text-align: center;
+    color: white;
+    height: 100%;
+  }
+.backgroundimg{
+    width: 100%;
+}
+.centered{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.heroheading{
+    font-family: 'Libre Baskerville', serif; 
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 62.4px;
+    text-align: center;
+}
+.heropera{
+    font-family: 'Inter', sans-serif; /* Adding a fallback font */
+    font-size: 19px;
+    font-weight: 100;
+    line-height: 24px;
+    text-align: center;
+    opacity: .6;
+}
+
+
+/* Upload File Code */
+.uploadContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2A1F3F;
+    padding: 2%;
+}
+.uploadBox{
+    padding: 20px 10px;
+    border: 2px dashed #ccc;
+    text-align: center;
+    color: white;
+    width: 100%;
+    background-color: #333745;
+}
+.uploadpera{
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 32px;
+    text-align: center;
+}
+.uploadpera2{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 32px;
+    text-align: center;
+    opacity: .6;
+}
+.uploadButton{
+    background-color: #4D61FC;
+    color: white;
+    border: none;
+    padding: 2% 20%;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 20px;
+}
+.uploadButton :hover{
+    background-color: #357abd;
+}
+
+@media (max-width: 1100px) {
+    .heroheading{
+        font-family: 'Libre Baskerville', serif; 
+        font-size: 36px;
+    }
+    .heropera{
+        font-family: 'Inter', sans-serif; /* Adding a fallback font */
+        font-size: 14px;
+    }
+    .uploadpera{
+        font-size: 14px;
+    }
+    .uploadpera2{
+        font-size: 12px;
+    }
+}

@@ -1,0 +1,92 @@
+.background {
+    background-color: #180C2E;
+    height: 100vh; /* Full viewport height */
+    width: 100vw; /* Full viewport width */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loadingContainer {
+    text-align: center;
+    padding: 50px;
+}
+
+.loadingBox {
+    margin: auto;
+    padding: 20px;
+    background-color: transparent;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.step {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.stepNumber {
+    width: 60px;
+    height: 60px;
+    background-color: #e0e0e0;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #4caf50;
+}
+
+.stepText {
+    font-size: 36px;
+    color: whitesmoke;
+}
+
+/* Fade-in and slide-up animation */
+.fadeIn {
+    animation: fadeIn 1.5s ease-out, slideUp 1.5s ease-out;
+}
+
+.fadeOut {
+    animation: fadeOut 1.5s ease-in, slideDown 1.5s ease-in;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes slideUp {
+    0% {
+        transform: translateY(20px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(20px);
+    }
+}

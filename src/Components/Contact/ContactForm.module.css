@@ -1,0 +1,109 @@
+.contactFormContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 0px;
+    background-color: #180C2E;
+    color: #fff;
+    flex-wrap: wrap; /* Allows items to wrap in smaller screens */
+}
+
+.introSection {
+    width: 30%;
+    padding-left: 10%;
+}
+
+.introSection h1 {
+    font-family: Libre Baskerville;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 52px;
+    text-align: left;
+}
+
+.introSection h2 {
+    font-family: Libre Baskerville;
+    font-size: 40px;
+    font-weight: 700;
+    text-align: left;
+
+}
+
+.introSection p {
+    font-size: 16px;
+}
+
+.introSection a {
+    color: #4a90e2;
+    text-decoration: none;
+}
+
+.formSection {
+    margin-right: 10%;
+    width: 30%;
+    background: #fff;
+    padding: 20px 30px ;
+    border-radius: 8px;
+    color: #333;
+}
+
+.formSection form {
+    display: flex;
+    flex-direction: column;
+}
+
+.formSection label {
+    margin-bottom: 10px;
+}
+
+.formSection input,
+.formSection select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 4px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.formSection button {
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.formSection button:hover {
+    background-color: #357abd;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .contactFormContainer {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .introSection,
+    .formSection {
+        width: 100%; /* Full width for smaller screens */
+    }
+
+    .introSection h1 {
+        font-size: 20px;
+    }
+
+    .introSection h2 {
+        font-size: 18px;
+    }
+
+    .introSection p {
+        font-size: 14px;
+    }
+
+    .formSection {
+        margin-top: 20px;
+    }
+}
