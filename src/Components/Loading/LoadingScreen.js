@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import styles from "./LoadingScreen.module.css";
-import background from "../../assets/background3.png";
 
 const steps = [
   "Loading your report",
@@ -18,46 +17,77 @@ const steps = [
 
 const LoadingScreen = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [currentStep, setCurrentStep] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
-  useEffect(() => {
-    // Update step every 9 seconds (9000 ms)
-    const stepInterval = setInterval(() => {
-      // Start exit transition (fade out)
-      setIsTransitioning(true);
+  const file = location.state?.file;
 
-      // Wait for 500ms for the exit animation before moving to the next step
+  useEffect(() => {
+    if (!file) {
+      // If no file, navigate back to home
+      navigate("/");
+      return;
+    }
+
+    // Start animating steps every 9 seconds
+    const stepInterval = setInterval(() => {
+      setIsTransitioning(true);
       setTimeout(() => {
         setCurrentStep((prevStep) => prevStep + 1);
-        // End the transition (start fade in for the new step)
         setIsTransitioning(false);
-      }, 500); // Animation duration (500ms)
-    }, 6000); // Total duration for each step (9 seconds)
+      }, 500);
+    }, 9000);
 
-    // Simulate the 90 seconds wait before navigating to the result screen
-    const timer = setTimeout(() => {
-      navigate("/filecontent", { replace: true });
-    }, 60000); // 90 seconds
+    // Function to handle file upload to the API
+    const uploadFile = async () => {
+      const formData = new FormData();
+      formData.append("file", file); // Append the file to FormData
 
-    // Clear timers if the component unmounts
-    return () => {
-      clearInterval(stepInterval);
-      clearTimeout(timer);
+      try {
+        const response = await fetch("/upload-pdf", {
+          method: "POST",
+          body: formData,
+        });
+
+        const result = await response.text(); // Expecting text response
+
+        // Navigate to filecontent screen with the API result
+        navigate("/filecontent", { state: { result } });
+      } catch (error) {
+        console.error("Error uploading PDF:", error);
+      }
     };
-  }, [navigate]);
+
+    uploadFile();
+
+    return () => clearInterval(stepInterval);
+  }, [file, navigate]);
+
+  // Show 3 steps at a time
+  const stepWindow = steps.slice(currentStep, currentStep + 3);
 
   return (
     <div className={styles.background}>
       <div className={styles.loadingContainer}>
-        <div className={`${styles.loadingBox}`}>
-          <div
-            className={`${styles.step} ${
-              isTransitioning ? styles.fadeOut : styles.fadeIn
-            }`}
-          >
-            <div className={styles.stepNumber}>{currentStep + 1}</div>
-            <div className={styles.stepText}>{steps[currentStep]}</div>
+        <div className={styles.loadingBox}>
+          <div className={styles.stepper}>
+            {stepWindow.map((step, index) => (
+              <div
+                key={index}
+                className={`${styles.step} ${
+                  index === 0 ? styles.activeStep : ""
+                } ${isTransitioning ? styles.slideIn : ""}`}
+              >
+                <div className={styles.stepNumber}>
+                  {currentStep + index + 1}
+                </div>
+                <div className={styles.stepText}>
+                  {step}
+                  <span className={styles.loadingDots}></span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

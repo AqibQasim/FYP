@@ -3,20 +3,20 @@ import styles from "./Hero.module.css";
 import { useNavigate } from "react-router-dom";
 
 const HeroCentered = () => {
-  const [fileName, setFileName] = useState(""); // State to store the file name
+  const [file, setFile] = useState(null);
   const fileInput = useRef(null);
   const navigate = useNavigate();
 
   const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    if (!file) {
+    const selectedFile = event.target.files[0];
+    if (!selectedFile) {
       return;
     }
 
-    setFileName(file.name); // Set the file name when file is selected
+    setFile(selectedFile);
 
-    // Navigate to the loading screen after selecting a file
-    navigate("/loading");
+    // Navigate to the loading screen and pass the file as state
+    navigate("/loading", { state: { file: selectedFile } });
   };
 
   return (

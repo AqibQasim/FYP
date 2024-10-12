@@ -1,14 +1,23 @@
-import React from 'react';
+import React from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const FileContent = () => {
-    return (
-        <div style={{ padding: '20px', fontSize: '20px' , color: 'black' }}>
-            <p>This is the content of the uploaded file:</p>
-            <div>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </div>
-        </div>
-    );
-}
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { result } = location.state || {};
+
+  if (!result) {
+    // If no result, redirect to home
+    navigate("/");
+    return null;
+  }
+
+  return (
+    <div>
+      <h1>File Content</h1>
+      <pre>{result}</pre>
+    </div>
+  );
+};
 
 export default FileContent;
