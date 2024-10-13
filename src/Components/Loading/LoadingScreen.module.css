@@ -1,33 +1,36 @@
 .background {
-    background-color: #180C2E;
-    height: 100vh; /* Full viewport height */
-    width: 100vw; /* Full viewport width */
+    background-color: #180c2e;
+    height: 100vh;
+    width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.loadingContainer {
+  }
+  
+  .loadingContainer {
     text-align: center;
     padding: 50px;
-}
-
-.loadingBox {
+  }
+  
+  .loadingBox {
     margin: auto;
     padding: 20px;
     background-color: transparent;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
-.step {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .step {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 15px;
-}
-
-.stepNumber {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInSlideUp 0.5s forwards ease-out; /* Trigger on load */
+  }
+  
+  .stepNumber {
     width: 60px;
     height: 60px;
     background-color: #e0e0e0;
@@ -39,82 +42,49 @@
     font-size: 28px;
     font-weight: bold;
     color: #4caf50;
-}
-
-.stepText {
+  }
+  
+  .stepText {
     font-size: 36px;
     color: whitesmoke;
     display: flex;
     align-items: center;
-}
-
-/* Animation for the triple dots */
-.dots::after {
+  }
+  
+  /* Animation for the triple dots */
+  .loadingDots::after {
     content: '';
     display: inline-block;
     width: 1em;
-    font-size: xx-large;
     height: 1em;
     text-align: left;
     animation: dots 1s steps(3, end) infinite;
-}
-
-@keyframes dots {
+  }
+  
+  @keyframes dots {
     0%, 20% {
-        content: '';
+      content: '';
     }
     40% {
-        content: '.';
+      content: '.';
     }
     60% {
-        content: '..';
+      content: '..';
     }
     80%, 100% {
-        content: '...';
+      content: '...';
     }
-}
-
-/* Fade-in and slide-up animation */
-.fadeIn {
-    animation: fadeIn 0.5s ease-out, slideUp 0.5s ease-out;
-}
-
-.fadeOut {
-    animation: fadeOut 0.5s ease-in, slideDown 0.5s ease-in;
-}
-
-@keyframes fadeIn {
+  }
+  
+  /* Fade-in and Slide-up Animation for step transition */
+  @keyframes fadeInSlideUp {
     0% {
-        opacity: 0;
+      opacity: 0;
+      transform: translateY(20px);
     }
     100% {
-        opacity: 1;
+      opacity: 1;
+      transform: translateY(0);
     }
-}
-
-@keyframes fadeOut {
-    0% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
-}
-
-@keyframes slideUp {
-    0% {
-        transform: translateY(20px);
-    }
-    100% {
-        transform: translateY(0);
-    }
-}
-
-@keyframes slideDown {
-    0% {
-        transform: translateY(0);
-    }
-    100% {
-        transform: translateY(20px);
-    }
-}
+  }
+  

@@ -25,7 +25,6 @@ const LoadingScreen = () => {
 
   useEffect(() => {
     if (!file) {
-      // If no file, navigate back to home
       navigate("/");
       return;
     }
@@ -34,28 +33,32 @@ const LoadingScreen = () => {
     const stepInterval = setInterval(() => {
       setIsTransitioning(true);
       setTimeout(() => {
-        setCurrentStep((prevStep) => prevStep + 1);
+        setCurrentStep((prevStep) =>
+          prevStep < steps.length - 1 ? prevStep + 1 : prevStep
+        );
         setIsTransitioning(false);
       }, 500);
-    }, 9000);
+    }, 6000);
 
     // Function to handle file upload to the API
     const uploadFile = async () => {
       const formData = new FormData();
-      formData.append("file", file); // Append the file to FormData
+      formData.append("file", file);
 
       try {
-        const response = await fetch("/upload-pdf", {
+        const response = await fetch("http://localhost:8002/upload-pdf", {
           method: "POST",
           body: formData,
         });
 
-        const result = await response.text(); // Expecting text response
+        const result = await response.json();
 
-        // Navigate to filecontent screen with the API result
         navigate("/filecontent", { state: { result } });
       } catch (error) {
+        navigate("/");
         console.error("Error uploading PDF:", error);
+      } finally {
+        clearInterval(stepInterval);
       }
     };
 
@@ -64,30 +67,22 @@ const LoadingScreen = () => {
     return () => clearInterval(stepInterval);
   }, [file, navigate]);
 
-  // Show 3 steps at a time
-  const stepWindow = steps.slice(currentStep, currentStep + 3);
-
   return (
     <div className={styles.background}>
       <div className={styles.loadingContainer}>
         <div className={styles.loadingBox}>
           <div className={styles.stepper}>
-            {stepWindow.map((step, index) => (
-              <div
-                key={index}
-                className={`${styles.step} ${
-                  index === 0 ? styles.activeStep : ""
-                } ${isTransitioning ? styles.slideIn : ""}`}
-              >
-                <div className={styles.stepNumber}>
-                  {currentStep + index + 1}
-                </div>
-                <div className={styles.stepText}>
-                  {step}
-                  <span className={styles.loadingDots}></span>
-                </div>
+            <div
+              className={`${styles.step} ${
+                isTransitioning ? styles.fadeInSlideUp : ""
+              }`}
+            >
+              <div className={styles.stepNumber}>{currentStep + 1}</div>
+              <div className={styles.stepText}>
+                {steps[currentStep]}
+                <span className={styles.loadingDots}></span>
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </div>
