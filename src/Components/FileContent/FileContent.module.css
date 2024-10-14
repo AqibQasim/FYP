@@ -1,0 +1,47 @@
+
+.container {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #E9EAEC;
+    border-radius: 12px;
+    margin-top: 2%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .heading {
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+  }
+  
+  .section {
+    margin-bottom: 30px;
+  }
+  
+  .subheading {
+    font-size: 24px;
+    color: #674e98;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 5px;
+  }
+  
+  .resultsList {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .testResult {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #555;
+  }
+  
+  .summaryText, .recommendationsText {
+    font-size: 18px;
+    color: #555;
+    line-height: 1.6;
+  }
+  
