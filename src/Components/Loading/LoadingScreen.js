@@ -55,7 +55,7 @@ const LoadingScreen = () => {
 
         navigate("/filecontent", { state: { result } });
       } catch (error) {
-        navigate("/");
+        navigate("/error", { state: { message: error.message } });
         console.error("Error uploading PDF:", error);
       } finally {
         clearInterval(stepInterval);

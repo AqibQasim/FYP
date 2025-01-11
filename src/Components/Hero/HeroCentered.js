@@ -13,8 +13,13 @@ const HeroCentered = () => {
       return;
     }
 
-    setFile(selectedFile);
+    // Validate file type
+    if (selectedFile.type !== "application/pdf") {
+      alert("Please select a valid Medical report in PDF format.");
+      return;
+    }
 
+    setFile(selectedFile);
     // Navigate to the loading screen and pass the file as state
     navigate("/loading", { state: { file: selectedFile } });
   };
@@ -36,6 +41,7 @@ const HeroCentered = () => {
           <input
             type="file"
             onChange={handleFileChange}
+            accept="application/pdf"
             style={{ display: "none" }}
             ref={fileInput}
           />

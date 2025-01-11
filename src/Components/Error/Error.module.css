@@ -1,0 +1,92 @@
+.errorPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to right, #f8f9fa, #e9ecef);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .errorContainer {
+    background-color: #ffffff;
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 600px;
+    width: 90%;
+    animation: fadeIn 0.8s ease-out;
+  }
+  
+  .errorImage {
+    width: 200px;
+    height: auto;
+    margin-bottom: 20px;
+  }
+  
+  .errorTitle {
+    font-size: 2.5rem;
+    color: #dc3545;
+    margin-bottom: 15px;
+    font-family: "Arial", sans-serif;
+    font-weight: bold;
+  }
+  
+  .errorMessage {
+    font-size: 1.2rem;
+    color: #555555;
+    margin-bottom: 10px;
+  }
+  
+  .errorInstructions {
+    font-size: 1rem;
+    color: #777777;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+  
+  .retryButton {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 24px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .retryButton:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+  }
+  
+  .supportInfo {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #555555;
+  }
+  
+  .supportInfo a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .supportInfo a:hover {
+    text-decoration: underline;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
